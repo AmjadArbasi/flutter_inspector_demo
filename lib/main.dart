@@ -11,6 +11,7 @@ class Emoji extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           icon,
@@ -40,40 +41,49 @@ class MainApp extends StatelessWidget {
           child: Column(
             children: [
               // Problem #1
-              Row(
-                children: const [
-                  Text(
-                    'Please provide your valuable feedback by sharing your experience with us!',
-                    style: TextStyle(
-                      fontSize: 18.0,
+              const Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Please provide your valuable feedback by sharing your experience with us!',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                 ],
               ),
 
               //Problem #2
-              Row(
-                children: const [
-                  Emoji('😀', 'Good'),
-                  Emoji('😐', 'Average'),
-                  Emoji('🙁', 'Bad'),
-                ],
+              const Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Emoji('😀', 'Good'),
+                    Emoji('😐', 'Average'),
+                    Emoji('🙁', 'Bad'),
+                  ],
+                ),
               ),
 
               // Problem #3
-              Row(
-                children: const [
-                  Divider(
-                    color: Colors.black,
+              const Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      color: Colors.black,
+                    ),
                   ),
                 ],
               ),
 
               // Problem #4
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
                     onPressed: () {
+                      debugPrint("${MediaQuery.of(context).size.width}");
                       debugPrint('Submit button pressed.');
                     },
                     child: const Text(
